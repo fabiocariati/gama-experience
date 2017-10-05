@@ -22,7 +22,7 @@ spec:
         app: flaskapp
     spec:
       containers:
-      - name: hermes
+      - name: flaskapp
         image: "fabioariati/flaskapp"
         ports:
         - name: admin
