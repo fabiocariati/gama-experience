@@ -22,7 +22,7 @@ spec:
         app: nodeapp
     spec:
       containers:
-      - name: hermes
+      - name: nodeapp
         image: "fabioariati/nodeapp"
         ports:
         - name: admin
