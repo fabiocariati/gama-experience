@@ -1,0 +1,30 @@
+kind: Service
+metadata:
+  name: nodeapp
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 3000
+  selector:
+    app: nodeapp
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodeapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+      - name: hermes
+        image: "fabioariati/nodeapp"
+        ports:
+        - name: admin
+          containerPort: 3000
+          protocol: TCP

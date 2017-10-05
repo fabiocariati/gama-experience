@@ -1,0 +1,30 @@
+kind: Service
+metadata:
+  name: flaskapp
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5000
+  selector:
+    app: flaskapp
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flaskapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flaskapp
+    spec:
+      containers:
+      - name: hermes
+        image: "fabioariati/flaskapp"
+        ports:
+        - name: admin
+          containerPort: 5000
+          protocol: TCP
