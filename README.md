@@ -1,8 +1,12 @@
-https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/
+#### Repositório das imagens
+https://hub.docker.com/u/fabioariati/
 
+#### Criando as imagens e subindo os serviços
 ```bash
 kubectl config use-context minikube
-
+```
+ App python
+```bash
 docker build -t nodeapp-i .
 
 docker tag flaskapp-i fabioariati/flaskapp
@@ -12,6 +16,7 @@ kubectl run nodeapp --image=fabioariati/nodeapp --port=3000
 kubectl expose deployment nodeapp --type=LoadBalancer
 minikube service nodeapp
 ```
+App nodejs
 ```bash
 docker build -t flaskapp-i .
 
