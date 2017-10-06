@@ -5,6 +5,10 @@ https://hub.docker.com/u/fabioariati/
 ```bash
 kubectl config use-context minikube
 ```
+```bash
+docker login
+minikube start
+```
  App node
 ```bash
 docker build -t nodeapp-i .
@@ -26,6 +30,11 @@ docker push fabioariati/flaskapp
 kubectl run flaskapp --image=fabioariati/flaskapp --port=5000
 kubectl expose deployment flaskapp --type=LoadBalancer
 minikube service flaskapp
+```
+
+Dashboard
+```bash
+minikube dashboard
 ```
 
 Removendo os serviços
