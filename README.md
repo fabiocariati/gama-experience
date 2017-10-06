@@ -32,6 +32,12 @@ kubectl expose deployment flaskapp --type=LoadBalancer
 minikube service flaskapp
 ```
 
+Criando os serviços via arquivo de configuração
+```bash
+kubectl create -f flaskapp/kube.yml
+kubectl create -f nodeapp/kube.yml
+```
+
 Dashboard
 ```bash
 minikube dashboard
