@@ -1,5 +1,6 @@
 'use strict';
 
+var path = require('path');
 const express = require('express');
 
 // Constants
@@ -8,8 +9,15 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
+
+app.use(express.static(__dirname + '/View'));
+
 app.get('/', (req, res) => {
-  res.send('O python precisa de mim para terminar esta tarefa\n');
+    res.sendFile('index.html');
+});
+
+app.get('/service', (req, res) => {
+    res.send('O python precisa de mim para terminar esta tarefa\n');
 });
 
 app.listen(PORT, HOST);

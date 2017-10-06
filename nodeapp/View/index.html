@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+<script type="text/babel">
+    class Greeting extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                data: "loading.."
+            };
+        }
+
+        componentDidMount() {
+            var that = this;
+            axios.get('/service')
+              .then(function (response) {
+                    console.log(response);
+                    that.setState({ data: response.data });
+              })
+              .catch(function (error) {
+                    console.log(error);
+              });
+        }
+
+        render() {
+            return (<p>{this.state.data}</p>);
+        }
+    }
+    ReactDOM.render(
+        <Greeting />,
+        document.getElementById('root')
+    );
+</script>
