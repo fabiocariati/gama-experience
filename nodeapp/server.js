@@ -18,8 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/service', (req, res) => {
-
-    var resp = request('GET', 'http://www.google.com', {
+    var resp = request('GET', 'http://flaskapp:5000', {
         'headers': {
             'user-agent': 'example-user-agent'
         }

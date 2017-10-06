@@ -27,3 +27,13 @@ kubectl run flaskapp --image=fabioariati/flaskapp --port=5000
 kubectl expose deployment flaskapp --type=LoadBalancer
 minikube service flaskapp
 ```
+
+Removendo os serviços
+```bash
+kubectl delete deployment flaskapp
+kubectl delete service flaskapp
+
+kubectl delete deployment nodeapp
+kubectl delete service nodeapp
+
+```
