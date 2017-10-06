@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require('path');
+var request = require('sync-request');
 const express = require('express');
 
 // Constants
@@ -17,7 +18,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/service', (req, res) => {
-    res.send('O python precisa de mim para terminar esta tarefa\n');
+
+    var resp = request('GET', 'http://www.google.com', {
+        'headers': {
+            'user-agent': 'example-user-agent'
+        }
+    });
+
+    res.send(resp.getBody());
 });
 
 app.listen(PORT, HOST);
