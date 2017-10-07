@@ -13,7 +13,7 @@ minikube start
 
 Python app
 ```bash
-docker build -t flaskapp-i .
+docker build -t flaskapp-i ./flaskapp
 
 docker tag flaskapp-i fabioariati/flaskapp
 docker push fabioariati/flaskapp
@@ -25,7 +25,7 @@ minikube service flaskapp
 
 Node app
 ```bash
-docker build -t nodeapp-i .
+docker build -t nodeapp-i ./nodeapp
 
 docker tag nodeapp-i fabioariati/nodeapp
 docker push fabioariati/nodeapp
@@ -33,12 +33,6 @@ docker push fabioariati/nodeapp
 kubectl run nodeapp --image=fabioariati/nodeapp --port=3000
 kubectl expose deployment nodeapp --type=LoadBalancer
 minikube service nodeapp
-```
-
-Criando os serviços via arquivo de configuração
-```bash
-kubectl create -f flaskapp/kube.yml
-kubectl create -f nodeapp/kube.yml
 ```
 
 Dashboard
@@ -54,4 +48,10 @@ kubectl delete service flaskapp
 kubectl delete deployment nodeapp
 kubectl delete service nodeapp
 
+```
+
+Criando os serviços via arquivo de configuração
+```bash
+kubectl create -f flaskapp/kube.yml
+kubectl create -f nodeapp/kube.yml
 ```

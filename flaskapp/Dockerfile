@@ -1,5 +1,7 @@
 FROM python:3-alpine
 
+RUN apk --update --no-cache add musl-dev musl-utils musl-dbg gcc libevent-dev libxml2-dev libxslt-dev libffi-dev
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
