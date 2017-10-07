@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Site list</title>
 </head>
 <body>
     <div id="root"></div>
@@ -15,11 +15,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 
 <script type="text/babel">
+    function SiteList(props) {
+      const sites = props.sites;
+      const listItems = sites.map((site) =>
+        <li key={site.toString()}>
+          {site}
+        </li>
+      );
+      return (
+        <ul>{listItems}</ul>
+      );
+    }
+
     class Greeting extends React.Component {
         constructor(props) {
             super(props);
             this.state = {
-                data: "loading.."
+                sites: []
             };
         }
 
@@ -28,7 +40,7 @@
             axios.get('/service')
               .then(function (response) {
                     console.log(response);
-                    that.setState({ data: response.data });
+                    that.setState({ sites: response.data.sites });
               })
               .catch(function (error) {
                     console.log(error);
@@ -36,7 +48,7 @@
         }
 
         render() {
-            return (<p>{this.state.data}</p>);
+            return (<SiteList sites={this.state.sites} />);
         }
     }
     ReactDOM.render(

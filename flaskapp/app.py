@@ -1,3 +1,5 @@
+import re
+
 from flask import Flask, jsonify
 import requests
 from lxml import html
