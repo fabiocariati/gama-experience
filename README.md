@@ -5,22 +5,13 @@ https://hub.docker.com/u/fabioariati/
 ```bash
 kubectl config use-context minikube
 ```
+
 ```bash
 docker login
 minikube start
 ```
- App node
-```bash
-docker build -t nodeapp-i .
 
-docker tag nodeapp-i fabioariati/nodeapp
-docker push fabioariati/nodeapp
-
-kubectl run nodeapp --image=fabioariati/nodeapp --port=3000
-kubectl expose deployment nodeapp --type=LoadBalancer
-minikube service nodeapp
-```
-App python
+Python app
 ```bash
 docker build -t flaskapp-i .
 
@@ -30,6 +21,18 @@ docker push fabioariati/flaskapp
 kubectl run flaskapp --image=fabioariati/flaskapp --port=5000
 kubectl expose deployment flaskapp --type=LoadBalancer
 minikube service flaskapp
+```
+
+Node app
+```bash
+docker build -t nodeapp-i .
+
+docker tag nodeapp-i fabioariati/nodeapp
+docker push fabioariati/nodeapp
+
+kubectl run nodeapp --image=fabioariati/nodeapp --port=3000
+kubectl expose deployment nodeapp --type=LoadBalancer
+minikube service nodeapp
 ```
 
 Criando os serviços via arquivo de configuração
